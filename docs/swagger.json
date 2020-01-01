@@ -1,0 +1,132 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Student API",
+        "description": "This is an api to deliver students.",
+        "version": "1.0.0"
+    },
+    "host": "http://localhost:3000",
+    "basePath": "/students",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/": {
+            "post": {
+                "summary": "Add a new student.",
+                "description": "CreateNewStudent(res, req)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Endpoints"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                          "$ref": "#/definitions/Student"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/students": {
+            "get": {
+                "summary": "Returns a list of students.",
+                "description": "GetAllStudents(res, req)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Endpoints"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/students/{id}": {
+            "get": {
+                "summary": "Find student by ID.",
+                "description": "GetSingleStudent(res, req)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Endpoints"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "put": {
+                "summary": "Update existing student.",
+                "description": "UpdateStudent(res, req)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Endpoints"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Student"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "summary": "Remove existing student.",
+                "description": "DeleteStudent(res, req)",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Endpoints"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Student":{
+            "type": "object",
+            "properties": {
+                "id":{
+                    "type": "string"
+                },
+                "studentName": {
+                    "type": "string"
+                },
+                "studentAge": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
