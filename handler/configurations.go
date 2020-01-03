@@ -5,19 +5,19 @@ import (
 	"fmt"
 	"github.com/go-chi/chi"
 	"net/http"
-	"tui.com/API/model"
+	"uni/API/model"
 )
 
 var students = []model.Student{
 	{
 		"1",
 		"Sarah",
-		"28",
+		28,
 	},
 	{
 		"2",
 		"Peter",
-		"34",
+		34,
 	},
 }
 
@@ -40,13 +40,13 @@ func GetSingleStudent(w http.ResponseWriter, r *http.Request) {
 func CreateNewStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("/createNewStudent")
 
-	request := map[string]string{}
+	request := model.Student{}
 	json.NewDecoder(r.Body).Decode(&request)
 
 	student := model.Student{
-		Id: request["id"],
-		StudentName: request["studentName"],
-		StudentAge: request["studentAge"],
+		Id: request.Id,
+		StudentName: request.StudentName,
+		StudentAge: request.StudentAge,
 	}
 
 	students = append(students, student)
@@ -69,20 +69,20 @@ func UpdateStudent(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("/updateStudent")
 	studentID := chi.URLParam(r, "id")
 
-	request := map[string]string{}
+	request := model.Student{}
 	json.NewDecoder(r.Body).Decode(&request)
 
 	updateStudent := model.Student{
-		Id: request["id"],
-		StudentName: request["studentName"],
-		StudentAge: request["studentAge"],
+		Id: request.Id,
+		StudentName: request.StudentName,
+		StudentAge: request.StudentAge,
 	}
 
-	for index, student := range students {
+	for index, _ := range students {
+		student := &students[index]
 		if student.Id == studentID {
 			student.StudentName = updateStudent.StudentName
 			student.StudentAge = updateStudent.StudentAge
-			students = append(students[:index], student)
 		}
 	}
 }

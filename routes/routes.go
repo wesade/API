@@ -2,7 +2,7 @@ package routes
 
 import (
 	"github.com/go-chi/chi"
-	"tui.com/API/handler"
+	"uni/API/handler"
 )
 
 func CreateRouter() *chi.Mux {

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"tui.com/API/routes"
+	"uni/API/routes"
 )
 
 func main(){
