@@ -124,7 +124,7 @@
                     "type": "string"
                 },
                 "studentAge": {
-                    "type": "int"
+                    "type": "integer"
                 }
             }
         }
