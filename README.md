@@ -2,9 +2,7 @@
 Dependency: https://golang.org/doc/install
 
 Build:
-
-  go build
+    go build
   
  Run:
- 
-  go run main.go
+    go run main.go
